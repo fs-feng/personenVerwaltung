@@ -1,9 +1,8 @@
-package ch.informatik.m322;
+package ch.informatik.m322.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Connector {
     private static Connector instance = new Connector();
@@ -19,6 +18,7 @@ public class Connector {
 
             Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
             System.out.printf("it worked!!!");
+
             connection.close();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
