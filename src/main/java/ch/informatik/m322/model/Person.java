@@ -1,5 +1,7 @@
 package ch.informatik.m322.model;
 
+import ch.informatik.m322.database.Connector;
+
 import java.util.Date;
 
 public class Person {
@@ -67,4 +69,9 @@ public class Person {
     public int getChildren() {
         return children;
     }
+
+    public void test() {
+        Connector hjubhjih = Connector.getInstance();
+    }
+
 }
