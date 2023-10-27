@@ -6,13 +6,13 @@ import java.awt.*;
 public class ButtonPanel extends JPanel {
     public ButtonPanel(){
 
-        JButton button1 = new JButton();
-        JButton button2 = new JButton();
+        JButton save = new JButton();
+        JButton cancel = new JButton();
 
-        this.add(button1);
-        this.add(button2);
-        button1.setPreferredSize(new Dimension(100,100));
-        button2.setPreferredSize(new Dimension(100,100));
+        this.add(save);
+        this.add(cancel);
+        save.setPreferredSize(new Dimension(100,30));
+        cancel.setPreferredSize(new Dimension(100,30));
         this.setLayout(new FlowLayout());
     }
 }
