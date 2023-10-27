@@ -31,7 +31,7 @@ public class MainController {
                 mainWindow.getMainPanel().getMainPanel().getPersonenTable().getModel(),
                 mainWindow);
         this.view = mainWindow;
-        index = 84;
+        index = 1;
         try {
             updateTable();
             updateInfo();
