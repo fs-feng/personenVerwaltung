@@ -12,7 +12,6 @@ public enum Region {
     Sankt_Gallen, Schaffhausen, Solothurn, Schwyz,
     Thurgau, Tessin,
     Uri,
-    Vaud,
     Waadt, Wallis,
     Zug, Zürich
 }
