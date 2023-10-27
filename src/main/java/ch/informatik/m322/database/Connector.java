@@ -1,9 +1,6 @@
 package ch.informatik.m322.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 
 /**
@@ -29,6 +26,7 @@ public class Connector {
 
     Connection connection;
     Statement statement;
+    ResultSet resultSet;
 
 
     /**
@@ -44,9 +42,36 @@ public class Connector {
             String password = "n/QOXwoEFg!c5yV2";
 
             connection = DriverManager.getConnection(jdbcUrl, username, password);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM personen");
             System.out.printf("Connection established");
 
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String vorname = resultSet.getString("vorname");
+                String geschlecht = resultSet.getString("geschlecht");
+                String geburtsdatum = resultSet.getString("geburtsdatum");
+                String ahvnummer = resultSet.getString("ahvnummer");
+                String region = resultSet.getString("region");
+                int kinder = resultSet.getInt("kinder");
 
+                System.out.println("ID: " + id);
+                System.out.println("Name: " + name);
+                System.out.println("Vorname: " + vorname);
+                System.out.println("Geschlecht: " + geschlecht);
+                System.out.println("Geburtsdatum: " + geburtsdatum);
+                System.out.println("AHV-Nummer: " + ahvnummer);
+                System.out.println("Region: " + region);
+                System.out.println("Kinder: " + kinder);
+                System.out.println("----------------------------------");
+            }
+
+            // Verbindung schließen
+            resultSet.close();
+            statement.close();
+
+            closeConnection();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
