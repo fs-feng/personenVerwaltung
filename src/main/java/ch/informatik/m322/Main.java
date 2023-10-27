@@ -1,6 +1,5 @@
 package ch.informatik.m322;
 
-import ch.informatik.m322.controller.MainActionListeners;
 import ch.informatik.m322.controller.MainController;
 import ch.informatik.m322.database.Connector;
 import ch.informatik.m322.view.main.MainWindow;

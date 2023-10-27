@@ -1,6 +1,5 @@
 package ch.informatik.m322.controller;
 
-import ch.informatik.m322.Main;
 import ch.informatik.m322.database.Connector;
 import ch.informatik.m322.view.main.MainWindow;
 
@@ -9,19 +8,21 @@ import java.sql.SQLException;
 
 public class MainController {
     private Connector connector;
-    private MainActionListeners mainActionListeners;
+    private MainListeners mainActionListeners;
     private MainWindow view;
 
 
     public MainController(MainWindow mainWindow) {
         connector = Connector.getInstance();
 
-        this.mainActionListeners = new MainActionListeners(
+        this.mainActionListeners = new MainListeners(
                 mainWindow.getMainPanel().getBottomPanel().getBtnSwitchLeft(),
                 mainWindow.getMainPanel().getBottomPanel().getBtnSwitchRight(),
                 mainWindow.getMainPanel().getBottomPanel().getBtnCreatePerson(),
                 mainWindow.getMainPanel().getBottomPanel().getBtnDeletePerson(),
-                mainWindow.getMainPanel().getBottomPanel().getBtnEditPerson());
+                mainWindow.getMainPanel().getBottomPanel().getBtnEditPerson(),
+                mainWindow.getMainPanel().getMainPanel().getPersonenTable().getPersonenTabelle(),
+                mainWindow.getMainPanel().getMainPanel().getPersonenTable().getModel());
         this.view = mainWindow;
         try {
             updateTable();

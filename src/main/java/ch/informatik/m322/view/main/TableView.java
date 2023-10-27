@@ -77,4 +77,8 @@ public class TableView extends JPanel {
     public DefaultTableModel getModel() {
         return model;
     }
+
+    public JTable getPersonenTabelle() {
+        return personenTabelle;
+    }
 }
