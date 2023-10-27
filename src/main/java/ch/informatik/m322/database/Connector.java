@@ -4,20 +4,20 @@ import java.sql.*;
 
 
 /**
- * Connector ist eine Singleton-Klasse, zuständig fuer die Verbindung mit der Datenbank personenVerwaltung
- * MariaDB JDBC Driver wird verwendet, um die Verbindung herzustellen.
+ * Connector is a Singleton class responsible for building the connection to the database.
+ * MariaDB JDBC Driver is used to build the connection.
  */
 public class Connector {
 
     /**
-     * Die Instanz der Connector Klasse
+     * Connector instance.
      */
     private static Connector instance = new Connector();
 
     /**
-     * Gibt die Instanz der Connector Klasse zurueck
+     * returns the instance of the Singleton class Connector.
      *
-     * @return die Instanz der Connector Klasse wird zurueckgegeben
+     * @return instance of Connector class will be returned.
      */
     public static Connector getInstance() {
         return instance;
@@ -30,9 +30,9 @@ public class Connector {
 
 
     /**
-     * Privater Konstruktor, um eine Verbindung zur Datenbank herzustellen.
-     * MariDB JDBC Driver wird geladen und eine Verbindung wird hergestellt.
-     * Fehlererkennung mit einem try catch ist vorhanden.
+     * private constructor for building the connection.
+     * MariDB JDBC Driver will run and build a connection.
+     * Errors will be handled via try-catch.
      */
     private Connector() {
         try {
@@ -79,10 +79,10 @@ public class Connector {
     }
 
     /**
-     * Schliesst die Verbindung mit der Datenbank.
-     * wird ausgeführt, wenn das Programm beendet wird.
+     * closes the connection to the database.
+     * executes when the application closes.
      *
-     * @throws SQLException Fehlerauswerfung im Fall eines Fehlers.
+     * @throws SQLException Catch error.
      */
     public void closeConnection() throws SQLException {
         connection.close();
