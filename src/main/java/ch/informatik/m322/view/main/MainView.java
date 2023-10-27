@@ -22,4 +22,8 @@ public class MainView extends JPanel {
     public TableView getPersonenTable() {
         return personenTable;
     }
+
+    public InfoView getInfoPanel() {
+        return infoPanel;
+    }
 }

@@ -24,10 +24,11 @@ public class Connector {
     }
 
 
-    Connection connection;
-    Statement statement;
-    ResultSet resultSet;
-    String sqlQuery;
+    private Connection connection;
+    private Statement statement;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+    private String sqlQuery;
 
 
     /**
@@ -44,7 +45,6 @@ public class Connector {
 
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
-
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -58,7 +58,12 @@ public class Connector {
      * @throws SQLException Catch error.
      */
     public void closeConnection() throws SQLException {
-        connection.close();
+        if (resultSet != null)
+            resultSet.close();
+        if (statement != null)
+            statement.close();
+        if (connection != null)
+            connection.close();
     }
 
 
@@ -82,6 +87,14 @@ public class Connector {
 
     public void setStatement(Statement statement) {
         this.statement = statement;
+    }
+
+    public PreparedStatement getPreparedStatement() {
+        return preparedStatement;
+    }
+
+    public void setPreparedStatement(PreparedStatement preparedStatement) {
+        this.preparedStatement = preparedStatement;
     }
 
     public ResultSet getResultSet() {

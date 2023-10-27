@@ -1,14 +1,18 @@
 package ch.informatik.m322.controller;
 
+import ch.informatik.m322.database.Connector;
 import ch.informatik.m322.view.dialog.DialogWindow;
+import ch.informatik.m322.view.main.MainWindow;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 
 public class MainListeners {
     private JButton btnSwitchLeft;
@@ -18,8 +22,12 @@ public class MainListeners {
     private JButton btnEditPerson;
     private JTable personenTable;
     private DefaultTableModel personenTableModel;
+    private  MainController mainController;
+    private MainWindow window;
+    private Connector connector;
 
-    public MainListeners(JButton btnSwitchLeft, JButton btnSwitchRight, JButton btnCreatePerson, JButton btnDeletePerson, JButton btnEditPerson, JTable personenTable, DefaultTableModel personenTableModel) {
+    public MainListeners(MainController mainController, JButton btnSwitchLeft, JButton btnSwitchRight, JButton btnCreatePerson, JButton btnDeletePerson, JButton btnEditPerson, JTable personenTable, DefaultTableModel personenTableModel, MainWindow window) {
+        this.mainController = mainController;
         this.btnSwitchLeft = btnSwitchLeft;
         this.btnSwitchRight = btnSwitchRight;
         this.btnCreatePerson = btnCreatePerson;
@@ -27,6 +35,9 @@ public class MainListeners {
         this.btnEditPerson = btnEditPerson;
         this.personenTable = personenTable;
         this.personenTableModel = personenTableModel;
+        this.window = window;
+
+        this.connector = Connector.getInstance();
 
         setupSwitchLeft();
         setupSwitchRight();
@@ -34,13 +45,27 @@ public class MainListeners {
         setupDeletePerson();
         setupEditPerson();
         setupTableSelectionListener();
+        setupWindowCloseListener();
     }
 
     private void setupSwitchLeft() {
         btnSwitchLeft.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("left");
+                if (mainController.getIndex() > 1 ) {
+                    try {
+                        mainController.setIndex(mainController.getIndex() - 1);
+                        mainController.updateInfo();
+                        mainController.updateTable();
+                        while (mainController.getPerson().getId() != mainController.getIndex()) {
+                            mainController.setIndex(mainController.getIndex() - 1);
+                            mainController.updateInfo();
+                            mainController.updateTable();
+                        }
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
             }
         });
     }
@@ -49,7 +74,21 @@ public class MainListeners {
         btnSwitchRight.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("right");
+                if (mainController.getIndex() < (int) personenTableModel.getDataVector().elementAt(personenTableModel.getRowCount()-1).elementAt(0) - 1) {
+                    try {
+                        mainController.setIndex(mainController.getIndex() + 1);
+                        mainController.updateInfo();
+                        mainController.updateTable();
+                        while (mainController.getPerson().getId() != mainController.getIndex()) {
+                            mainController.setIndex(mainController.getIndex() + 1);
+                            mainController.updateInfo();
+                            mainController.updateTable();
+                        }
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
             }
         });
     }
@@ -67,7 +106,14 @@ public class MainListeners {
         btnDeletePerson.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("delete");
+                int selectedPerson = mainController.getPerson().getId() + 1;
+                try {
+                    mainController.deletePerson();
+                    mainController.updateInfo();
+                    mainController.updateTable();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
@@ -86,30 +132,33 @@ public class MainListeners {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
-                    // Reagiere auf die Auswahl des Datensatzes
                     int selectedRow = personenTable.getSelectedRow();
                     if (selectedRow >= 0) {
-                        // Hier kannst du den ausgewählten Datensatz verwenden
-                        Object selectedData = personenTableModel.getDataVector().elementAt(selectedRow);
-                        System.out.println("Ausgewählter Datensatz: " + selectedData);
+                        mainController.setIndex((int) personenTableModel.getDataVector().elementAt(selectedRow).elementAt(0));
+                        try {
+                            mainController.updateInfo();
+                            mainController.updateTable();
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
+
                     }
                 }
             }
         });
     }
-    /**
-    table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-        @Override
-        public void valueChanged(ListSelectionEvent e) {
-            if (!e.getValueIsAdjusting()) {
-                // Reagiere auf die Auswahl des Datensatzes
-                int selectedRow = table.getSelectedRow();
-                if (selectedRow >= 0) {
-                    // Hier kannst du den ausgewählten Datensatz verwenden
-                    Object selectedData = model.getDataVector().elementAt(selectedRow);
-                    System.out.println("Ausgewählter Datensatz: " + selectedData);
+
+    private void setupWindowCloseListener() {
+        window.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    connector.closeConnection();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
                 }
             }
-        }
-    });**/
+        });
+    }
+
 }
