@@ -45,7 +45,6 @@ public class Connector {
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
 
-            closeConnection();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

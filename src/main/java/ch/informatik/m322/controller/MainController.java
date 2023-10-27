@@ -26,7 +26,7 @@ public class MainController {
         try {
             updateTable();
         } catch (SQLException e) {
-            System.out.printf("");
+            e.printStackTrace();
         }
     }
 
@@ -53,4 +53,6 @@ public class MainController {
             });
         }
     }
+
+
 }
