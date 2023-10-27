@@ -39,4 +39,25 @@ public class BottomView extends JPanel {
         this.add(leftHolder, BorderLayout.WEST);
         this.add(rightHolder, BorderLayout.CENTER);
     }
+
+    //getter and setter
+    public JButton getBtnSwitchLeft() {
+        return btnSwitchLeft;
+    }
+
+    public JButton getBtnSwitchRight() {
+        return btnSwitchRight;
+    }
+
+    public JButton getBtnCreatePerson() {
+        return btnCreatePerson;
+    }
+
+    public JButton getBtnDeletePerson() {
+        return btnDeletePerson;
+    }
+
+    public JButton getBtnEditPerson() {
+        return btnEditPerson;
+    }
 }

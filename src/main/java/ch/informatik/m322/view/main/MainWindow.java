@@ -17,4 +17,8 @@ public class MainWindow extends JFrame {
         this.setVisible(true);
         this.pack();
     }
+
+    public MainPanel getMainPanel() {
+        return mainPanel;
+    }
 }

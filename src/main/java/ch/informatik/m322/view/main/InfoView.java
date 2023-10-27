@@ -72,10 +72,10 @@ public class InfoView extends JPanel {
 
         this.add(labelHolder, BorderLayout.WEST);
         this.add(labelValueHolder, BorderLayout.CENTER);
-        setInfo(12,"fakjf", "Muster", Gender.male, new Date(),"42222222",Region.Aargau,2);
+        insertInfo(12,"fakjf", "Muster", Gender.male, new Date(),"42222222",Region.Aargau,2);
     }
 
-    public void setInfo(int id, String surName, String firstName, Gender gender, Date birthDate, String ahvNumber, Region region, int children) {
+    public void insertInfo(int id, String surName, String firstName, Gender gender, Date birthDate, String ahvNumber, Region region, int children) {
         labelIdValue.setText(Integer.toString(id));
         labelSurNameValue.setText(surName);
         labelFirstNameValue.setText(firstName);
@@ -84,5 +84,9 @@ public class InfoView extends JPanel {
         labelAhvNumberValue.setText(ahvNumber);
         labelRegionValue.setText(region.toString());
         labelChildrenValue.setText(Integer.toString(children));
+    }
+
+    public void setupActionListener() {
+
     }
 }

@@ -70,8 +70,5 @@ public class Person {
         return children;
     }
 
-    public void test() {
-        Connector hjubhjih = Connector.getInstance();
-    }
 
 }

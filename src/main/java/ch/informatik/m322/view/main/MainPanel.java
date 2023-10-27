@@ -4,25 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainPanel extends JPanel {
-    private TableView personenTable;
-    private InfoView infoPanel;
+
     private BottomView bottomPanel;
+    private MainView mainPanel;
 
     public MainPanel() {
         super(new BorderLayout());
 
-
-        infoPanel = new InfoView();
-        this.add(infoPanel, BorderLayout.WEST);
+        mainPanel = new MainView();
+        this.add(mainPanel, BorderLayout.CENTER);
 
         bottomPanel = new BottomView();
         this.add(bottomPanel, BorderLayout.SOUTH);
+    }
 
-        personenTable = new TableView();
-        this.add(personenTable, BorderLayout.CENTER);
+    public BottomView getBottomPanel() {
+        return bottomPanel;
+    }
 
-
-
-
+    public MainView getMainPanel() {
+        return mainPanel;
     }
 }

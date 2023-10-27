@@ -1,5 +1,7 @@
 package ch.informatik.m322;
 
+import ch.informatik.m322.controller.MainActionListeners;
+import ch.informatik.m322.controller.MainController;
 import ch.informatik.m322.database.Connector;
 import ch.informatik.m322.view.main.MainWindow;
 
@@ -15,7 +17,11 @@ public class Main {
         {
             e.printStackTrace();
         }
+
+
         MainWindow mainWindow = new MainWindow();
+        MainController mainController = new MainController(mainWindow);
+
         Connector connector = Connector.getInstance();
 
     }

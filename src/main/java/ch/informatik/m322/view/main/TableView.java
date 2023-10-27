@@ -63,7 +63,7 @@ public class TableView extends JPanel {
             {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
             // Füge hier deine Datensätze aus der Datenbank ein
     };
-    String[] columns = {"ID", "Vorname", "Nachname", "Geschlecht", "Geburtsdatum", "AHV-Nummer", "Region", "Kinder"};
+    String[] columns = {"ID", "surname", "firstname", "gender", "birthdate", "AHV-number", "region", "children"};
 
     private DefaultTableModel model;
     public TableView() {
@@ -71,7 +71,10 @@ public class TableView extends JPanel {
         personenTabelle = new JTable(model);
         JScrollPane test = new JScrollPane(personenTabelle);
         this.add(test);
+    }
 
 
+    public DefaultTableModel getModel() {
+        return model;
     }
 }
