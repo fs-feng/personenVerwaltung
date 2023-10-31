@@ -97,7 +97,7 @@ public class MainListeners {
         btnCreatePerson.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("create");
+                DialogWindow dialogWindow = new DialogWindow("save");
             }
         });
     }
@@ -122,7 +122,7 @@ public class MainListeners {
         btnEditPerson.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DialogWindow window = new DialogWindow();
+                DialogWindow dialogWindow = new DialogWindow("save");
             }
         });
     }
@@ -151,9 +151,14 @@ public class MainListeners {
     private void setupWindowCloseListener() {
         window.addWindowListener(new WindowAdapter() {
             @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+            @Override
             public void windowClosing(WindowEvent e) {
                 try {
                     connector.closeConnection();
+                    System.out.println("Window closed!");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

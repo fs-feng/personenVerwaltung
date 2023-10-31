@@ -6,68 +6,12 @@ import javax.swing.table.DefaultTableModel;
 public class TableView extends JPanel {
     private JTable personenTabelle;
 
-    Object[][] data = {
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            {"1", "Max", "Mustermann", "male", "1980-05-15", "123456789", "Zürich", 2},
-            {"2", "Anna", "Meier", "female", "1990-02-20", "987654321", "Bern", 0},
-            // Füge hier deine Datensätze aus der Datenbank ein
-    };
+
     String[] columns = {"ID", "surname", "firstname", "gender", "birthdate", "AHV-number", "region", "children"};
 
     private DefaultTableModel model;
     public TableView() {
-        model = new DefaultTableModel(data, columns);
+        model = new DefaultTableModel(null, columns);
         personenTabelle = new JTable(model);
         JScrollPane test = new JScrollPane(personenTabelle);
         this.add(test);

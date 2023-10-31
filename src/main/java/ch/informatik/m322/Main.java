@@ -8,18 +8,23 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");  // This line gives Windows Theme
 
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");  // This line gives Windows Theme
+
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            MainWindow mainWindow = new MainWindow();
+            MainController mainController = new MainController(mainWindow);
+        });
 
 
-        MainWindow mainWindow = new MainWindow();
-        MainController mainController = new MainController(mainWindow);
+
+
 
         Connector connector = Connector.getInstance();
 
