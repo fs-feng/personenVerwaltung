@@ -8,6 +8,8 @@ import ch.informatik.m322.view.main.MainWindow;
 
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class MainController {
     private Connector connector;
@@ -15,10 +17,12 @@ public class MainController {
     private MainWindow view;
     private Person person;
     private int index;
+    private DialogController dialogController;
 
 
     public MainController(MainWindow mainWindow) {
         connector = Connector.getInstance();
+        dialogController = new DialogController();
 
         this.mainActionListeners = new MainListeners(
                 this,
@@ -75,7 +79,7 @@ public class MainController {
                     connector.getResultSet().getString("name"),
                     connector.getResultSet().getString("vorname"),
                     Gender.valueOf(connector.getResultSet().getString("geschlecht")),
-                    connector.getResultSet().getDate("geburtsdatum"),
+                    connector.getResultSet().getDate("geburtsdatum").toLocalDate(),
                     connector.getResultSet().getString("ahvnummer"),
                     Region.valueOf(connector.getResultSet().getString("region")),
                     connector.getResultSet().getInt("kinder"));
@@ -98,6 +102,11 @@ public class MainController {
         connector.setPreparedStatement(connector.getConnection().prepareStatement(connector.getSqlQuery()));
         connector.getPreparedStatement().setInt(1, person.getId());
         connector.getPreparedStatement().executeUpdate();
+    }
+
+
+    public DialogController getDialogController() {
+        return dialogController;
     }
 
     public Person getPerson() {

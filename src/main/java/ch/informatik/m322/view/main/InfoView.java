@@ -5,6 +5,7 @@ import ch.informatik.m322.model.Region;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class InfoView extends JPanel {
@@ -72,10 +73,9 @@ public class InfoView extends JPanel {
 
         this.add(labelHolder, BorderLayout.WEST);
         this.add(labelValueHolder, BorderLayout.CENTER);
-        insertInfo(12,"fakjf", "Muster", Gender.male, new Date(),"42222222",Region.Aargau,2);
     }
 
-    public void insertInfo(int id, String surName, String firstName, Gender gender, Date birthDate, String ahvNumber, Region region, int children) {
+    public void insertInfo(int id, String surName, String firstName, Gender gender, LocalDate birthDate, String ahvNumber, Region region, int children) {
         labelIdValue.setText(Integer.toString(id));
         labelSurNameValue.setText(surName);
         labelFirstNameValue.setText(firstName);

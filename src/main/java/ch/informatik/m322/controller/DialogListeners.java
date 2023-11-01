@@ -11,29 +11,41 @@ public class DialogListeners {
     private JButton btnCreate;
     private JButton btnCancel;
     private JButton btnEdit;
-    private DialogWindow dialogData;
+    private DialogWindow dialogWindow;
 
-    public DialogListeners(DialogWindow dialogData) {
-        this.dialogData = dialogData;
+    public DialogListeners() {
+
     }
 
-    public void setupCancel() {
-        btnCancel = dialogData.getDialogPanel().getBottomView().getCancelButton();
-
+    public void setupCancel(JButton btnCancel) {
         btnCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dialogData.dispose();
+                dialogWindow.dispose();
             }
         });
 
     }
 
-    public void setupCreate() {
-
+    public void setupCreate(JButton btnCreate) {
+        btnCreate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialogWindow.dispose();
+            }
+        });
     }
 
-    public void setupEdit() {
+    public void setupEdit(JButton btnEdit) {
+        btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialogWindow.dispose();
+            }
+        });
+    }
 
+    public void setDialogWindow(DialogWindow dialogWindow) {
+        this.dialogWindow = dialogWindow;
     }
 }

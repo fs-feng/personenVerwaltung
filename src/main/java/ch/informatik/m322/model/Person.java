@@ -2,6 +2,7 @@ package ch.informatik.m322.model;
 
 import ch.informatik.m322.database.Connector;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Person {
@@ -9,7 +10,7 @@ public class Person {
     private String surName;
     private String firstName;
     private Gender gender;
-    private Date birthDate; //int year, int month, int date
+    private LocalDate birthDate; //int year, int month, int date
     private String ahvNumber;
     private Region region;
     private int children;
@@ -25,12 +26,22 @@ public class Person {
      * @param region
      * @param children
      */
-    public Person(int id, String surName, String firstName, Gender gender, Date birthDate, String ahvNumber, Region region, int children) {
+    public Person(int id, String surName, String firstName, Gender gender, LocalDate birthDate, String ahvNumber, Region region, int children) {
         this.id = id;
         this.surName = surName;
         this.firstName = firstName;
         this.gender = gender;
         this.birthDate = birthDate;
+        this.ahvNumber = ahvNumber;
+        this.region = region;
+        this.children = children;
+    }
+
+    public Person(String surName, String firstName, Gender gender, String birthDate, String ahvNumber, Region region, int children) {
+        this.surName = surName;
+        this.firstName = firstName;
+        this.gender = gender;
+        this.birthDate = LocalDate.parse(birthDate);
         this.ahvNumber = ahvNumber;
         this.region = region;
         this.children = children;
@@ -54,7 +65,7 @@ public class Person {
         return gender;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 

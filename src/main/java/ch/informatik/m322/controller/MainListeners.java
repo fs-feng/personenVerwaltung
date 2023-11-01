@@ -97,10 +97,21 @@ public class MainListeners {
         btnCreatePerson.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DialogWindow dialogWindow = new DialogWindow("save");
+                mainController.getDialogController().setupCreateDialog();
             }
         });
     }
+
+    private void setupEditPerson() {
+        btnEditPerson.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainController.getDialogController();
+                mainController.getDialogController().setupEditDialog(mainController.getPerson());
+            }
+        });
+    }
+
 
     private void setupDeletePerson() {
         btnDeletePerson.addActionListener(new ActionListener() {
@@ -114,15 +125,6 @@ public class MainListeners {
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-            }
-        });
-    }
-
-    private void setupEditPerson() {
-        btnEditPerson.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DialogWindow dialogWindow = new DialogWindow("save");
             }
         });
     }
@@ -152,7 +154,7 @@ public class MainListeners {
         window.addWindowListener(new WindowAdapter() {
             @Override
             public void windowOpened(WindowEvent e) {
-
+                System.out.println("Window opened");
             }
             @Override
             public void windowClosing(WindowEvent e) {

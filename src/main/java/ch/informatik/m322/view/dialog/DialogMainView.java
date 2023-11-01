@@ -78,9 +78,9 @@ public class DialogMainView extends JPanel {
         radioOther = new JRadioButton("other");
 
 
-        radioMen = new JRadioButton("men");
-        radioOther = new JRadioButton("woman");
-        radioWomen = new JRadioButton("other");
+        radioMen = new JRadioButton("male");
+        radioOther = new JRadioButton("other");
+        radioWomen = new JRadioButton("female");
         genderHolder = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         genderGroup = new ButtonGroup();
@@ -112,27 +112,79 @@ public class DialogMainView extends JPanel {
         return firstNameText;
     }
 
+    public void setFirstNameText(JTextField firstNameText) {
+        this.firstNameText = firstNameText;
+    }
+
     public JTextField getSurNameText() {
         return surNameText;
+    }
+
+    public void setSurNameText(JTextField surNameText) {
+        this.surNameText = surNameText;
+    }
+
+    public JRadioButton getRadioWomen() {
+        return radioWomen;
+    }
+
+    public void setRadioWomen(JRadioButton radioWomen) {
+        this.radioWomen = radioWomen;
+    }
+
+    public JRadioButton getRadioMen() {
+        return radioMen;
+    }
+
+    public void setRadioMen(JRadioButton radioMen) {
+        this.radioMen = radioMen;
+    }
+
+    public JRadioButton getRadioOther() {
+        return radioOther;
+    }
+
+    public void setRadioOther(JRadioButton radioOther) {
+        this.radioOther = radioOther;
     }
 
     public ButtonGroup getGenderGroup() {
         return genderGroup;
     }
 
+    public void setGenderGroup(ButtonGroup genderGroup) {
+        this.genderGroup = genderGroup;
+    }
+
     public FormattedField getBirthDateField() {
         return birthDateField;
+    }
+
+    public void setBirthDateField(FormattedField birthDateField) {
+        this.birthDateField = birthDateField;
     }
 
     public FormattedField getAhvField() {
         return ahvField;
     }
 
+    public void setAhvField(FormattedField ahvField) {
+        this.ahvField = ahvField;
+    }
+
     public JSpinner getRegionSpinner() {
         return regionSpinner;
     }
 
+    public void setRegionSpinner(JSpinner regionSpinner) {
+        this.regionSpinner = regionSpinner;
+    }
+
     public JSpinner getChildSpinner() {
         return childSpinner;
+    }
+
+    public void setChildSpinner(JSpinner childSpinner) {
+        this.childSpinner = childSpinner;
     }
 }
