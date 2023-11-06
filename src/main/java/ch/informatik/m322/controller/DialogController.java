@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Locale;
 
 public class DialogController {
@@ -46,7 +47,7 @@ public class DialogController {
         dialogWindow.getDialogPanel().getMainView().getFirstNameText().setText(person.getFirstName());
         dialogWindow.getDialogPanel().getMainView().getSurNameText().setText(person.getSurName());
         dialogWindow.getDialogPanel().getMainView().getAhvField().setText(person.getAhvNumber());
-        dialogWindow.getDialogPanel().getMainView().getBirthDateField().setText(person.getBirthDate().toString());
+        dialogWindow.getDialogPanel().getMainView().getDatePicker().setDate(Date.from(person.getBirthDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         System.out.println(person.getBirthDate().toString());
         dialogWindow.getDialogPanel().getMainView().getChildSpinner().setValue(person.getChildren());
         dialogWindow.getDialogPanel().getMainView().getRegionSpinner().setValue(person.getRegion());
@@ -76,7 +77,7 @@ public class DialogController {
                 dialogMainView.getSurNameText().getText(),
                 dialogMainView.getFirstNameText().getText(),
                 getRadioGender(dialogMainView),
-                dialogMainView.getBirthDateField().getText(),
+                dialogMainView.getDatePicker().getDate().toString(),
                 dialogMainView.getAhvField().getText(),
                 (Region) dialogMainView.getRegionSpinner().getValue(),
                 (int) dialogMainView.getChildSpinner().getValue()

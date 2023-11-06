@@ -1,9 +1,12 @@
 package ch.informatik.m322.view.dialog;
 
 import ch.informatik.m322.model.Region;
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
 import javax.swing.*;
 import java.awt.*;
+
 
 public class DialogMainView extends JPanel {
     private JLabel labelId;
@@ -24,7 +27,8 @@ public class DialogMainView extends JPanel {
     private JRadioButton radioOther;
     private ButtonGroup genderGroup;
 
-    private FormattedField birthDateField;
+
+    private JDateChooser datePicker;
     private FormattedField ahvField;
 
     private JSpinner regionSpinner;
@@ -64,11 +68,12 @@ public class DialogMainView extends JPanel {
         surNameText = new JTextField();
 
         try {
-            birthDateField = new FormattedField("##-##-####");
             ahvField = new FormattedField("###.####.####.##");
         } catch (Exception e) {
             System.out.println(e);
         }
+
+        datePicker = new JDateChooser();
 
         regionSpinner = new JSpinner(new SpinnerListModel(Region.values()));
         childSpinner = new JSpinner();
@@ -96,7 +101,7 @@ public class DialogMainView extends JPanel {
         inputHolder.add(surNameText);
         inputHolder.add(firstNameText);
         inputHolder.add(genderHolder);
-        inputHolder.add(birthDateField);
+        inputHolder.add(datePicker);
         inputHolder.add(ahvField);
         inputHolder.add(regionSpinner);
         inputHolder.add(childSpinner);
@@ -156,12 +161,12 @@ public class DialogMainView extends JPanel {
         this.genderGroup = genderGroup;
     }
 
-    public FormattedField getBirthDateField() {
-        return birthDateField;
+    public JDateChooser getDatePicker() {
+        return datePicker;
     }
 
-    public void setBirthDateField(FormattedField birthDateField) {
-        this.birthDateField = birthDateField;
+    public void setDatePicker(JDateChooser datePicker) {
+        this.datePicker = datePicker;
     }
 
     public FormattedField getAhvField() {
