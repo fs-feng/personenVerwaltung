@@ -31,7 +31,7 @@ public class DialogMainView extends JPanel {
     private JDateChooser datePicker;
     private FormattedField ahvField;
 
-    private JSpinner regionSpinner;
+    private JComboBox combobox;
     private JSpinner childSpinner;
 
 
@@ -75,7 +75,7 @@ public class DialogMainView extends JPanel {
 
         datePicker = new JDateChooser();
 
-        regionSpinner = new JSpinner(new SpinnerListModel(Region.values()));
+        combobox = new JComboBox(Region.values());
         childSpinner = new JSpinner();
 
         radioWomen = new JRadioButton("woman");
@@ -103,7 +103,7 @@ public class DialogMainView extends JPanel {
         inputHolder.add(genderHolder);
         inputHolder.add(datePicker);
         inputHolder.add(ahvField);
-        inputHolder.add(regionSpinner);
+        inputHolder.add(combobox);
         inputHolder.add(childSpinner);
 
 
@@ -177,19 +177,18 @@ public class DialogMainView extends JPanel {
         this.ahvField = ahvField;
     }
 
-    public JSpinner getRegionSpinner() {
-        return regionSpinner;
-    }
-
-    public void setRegionSpinner(JSpinner regionSpinner) {
-        this.regionSpinner = regionSpinner;
-    }
-
     public JSpinner getChildSpinner() {
         return childSpinner;
     }
 
     public void setChildSpinner(JSpinner childSpinner) {
         this.childSpinner = childSpinner;
+    }
+
+    public void setCombobox(JComboBox combobox) {
+        this.combobox = combobox;
+    }
+    public JComboBox getCombobox() {
+        return combobox;
     }
 }
