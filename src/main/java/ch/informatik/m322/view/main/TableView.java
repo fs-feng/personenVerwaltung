@@ -11,7 +11,12 @@ public class TableView extends JPanel {
 
     private DefaultTableModel model;
     public TableView() {
-        model = new DefaultTableModel(null, columns);
+        model = new DefaultTableModel(null, columns) {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
         personenTabelle = new JTable(model);
         JScrollPane test = new JScrollPane(personenTabelle);
         this.add(test);

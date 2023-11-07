@@ -3,6 +3,7 @@ package ch.informatik.m322.model;
 import ch.informatik.m322.database.Connector;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Person {
@@ -37,11 +38,11 @@ public class Person {
         this.children = children;
     }
 
-    public Person(String surName, String firstName, Gender gender, String birthDate, String ahvNumber, Region region, int children) {
+    public Person(String surName, String firstName, Gender gender, Date birthDate, String ahvNumber, Region region, int children) {
         this.surName = surName;
         this.firstName = firstName;
         this.gender = gender;
-        this.birthDate = LocalDate.parse(birthDate);
+        this.birthDate = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         this.ahvNumber = ahvNumber;
         this.region = region;
         this.children = children;
@@ -81,5 +82,31 @@ public class Person {
         return children;
     }
 
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setAhvNumber(String ahvNumber) {
+        this.ahvNumber = ahvNumber;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public void setChildren(int children) {
+        this.children = children;
+    }
 }

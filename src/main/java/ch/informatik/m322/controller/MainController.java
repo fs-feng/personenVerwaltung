@@ -5,6 +5,7 @@ import ch.informatik.m322.model.Gender;
 import ch.informatik.m322.model.Person;
 import ch.informatik.m322.model.Region;
 import ch.informatik.m322.view.main.MainWindow;
+import ch.informatik.m322.view.main.TableView;
 
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class MainController {
 
     public MainController(MainWindow mainWindow) {
         connector = Connector.getInstance();
-        dialogController = new DialogController();
+        dialogController = new DialogController(this);
 
         this.mainActionListeners = new MainListeners(
                 this,
@@ -64,8 +65,10 @@ public class MainController {
                     connector.getResultSet().getString("region"),
                     connector.getResultSet().getInt("kinder")
             });
+
         }
     }
+
 
     public void updateInfo() throws SQLException {
 
@@ -102,6 +105,11 @@ public class MainController {
         connector.setPreparedStatement(connector.getConnection().prepareStatement(connector.getSqlQuery()));
         connector.getPreparedStatement().setInt(1, person.getId());
         connector.getPreparedStatement().executeUpdate();
+    }
+
+    public void setIndexMax() {
+        DefaultTableModel personenTableModel = view.getMainPanel().getMainPanel().getPersonenTable().getModel();
+        index = (int) personenTableModel.getDataVector().elementAt(personenTableModel.getRowCount()-1).elementAt(0);
     }
 
 

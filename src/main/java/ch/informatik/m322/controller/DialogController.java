@@ -7,12 +7,9 @@ import ch.informatik.m322.model.Region;
 import ch.informatik.m322.view.dialog.DialogMainView;
 import ch.informatik.m322.view.dialog.DialogWindow;
 
-import javax.swing.*;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Locale;
 
 public class DialogController {
     private DialogListeners dialogListeners;
@@ -20,10 +17,12 @@ public class DialogController {
     private DialogWindow dialogWindow;
     private Person person;
     private Connector connector;
+    private MainController mainController;
 
-    public DialogController() {
-        dialogListeners = new DialogListeners();
+    public DialogController(MainController mainController) {
+        dialogListeners = new DialogListeners(this);
         connector = Connector.getInstance();
+        this.mainController = mainController;
     }
 
 
@@ -71,23 +70,70 @@ public class DialogController {
         }
     }
 
+    public void updatePerson() throws SQLException {
+        DialogMainView mainView = dialogWindow.getDialogPanel().getMainView();
+
+        person.setFirstName(mainView.getFirstNameText().getText());
+        person.setSurName(mainView.getSurNameText().getText());
+        person.setGender(getRadioGender(mainView));
+        person.setRegion((Region) mainView.getCombobox().getSelectedItem());
+        person.setChildren((int) mainView.getChildSpinner().getValue());
+        person.setAhvNumber(mainView.getAhvField().getText());
+        person.setBirthDate(mainView.getDatePicker().getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+        connector.setSqlQuery("UPDATE personen " +
+                "SET name = ?, " +
+                "vorname = ?, " +
+                "kinder = ?, " +
+                "region = ?, " +
+                "geburtsdatum = ?, " +
+                "geschlecht = ?, " +
+                "ahvnummer = ? " +
+                "WHERE id = ?");
+        connector.setPreparedStatement(connector.getConnection().prepareStatement(connector.getSqlQuery()));
+        connector.getPreparedStatement().setString(1, person.getSurName());
+        connector.getPreparedStatement().setString(2, person.getFirstName());
+        connector.getPreparedStatement().setInt(3, person.getChildren());
+        connector.getPreparedStatement().setString(4, person.getRegion().toString());
+        connector.getPreparedStatement().setDate(5, Date.valueOf(person.getBirthDate()));
+        connector.getPreparedStatement().setString(6, person.getGender().toString());
+        connector.getPreparedStatement().setString(7, person.getAhvNumber());
+        connector.getPreparedStatement().setInt(8, person.getId());
+        connector.getPreparedStatement().executeUpdate();
+
+        mainController.updateTable();
+        mainController.updateInfo();
+    }
+
     public void createNewPerson() throws SQLException {
         DialogMainView dialogMainView = dialogWindow.getDialogPanel().getMainView();
         person = new Person(
                 dialogMainView.getSurNameText().getText(),
                 dialogMainView.getFirstNameText().getText(),
                 getRadioGender(dialogMainView),
-                dialogMainView.getDatePicker().getDate().toString(),
+                dialogMainView.getDatePicker().getDate(),
                 dialogMainView.getAhvField().getText(),
                 (Region) dialogMainView.getCombobox().getSelectedItem(),
                 (int) dialogMainView.getChildSpinner().getValue()
 
         );
 
-        connector.setSqlQuery("INSERT INTO personen");
+        connector.setSqlQuery("INSERT INTO personen (name, vorname, kinder, region, geburtsdatum, geschlecht, ahvnummer) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)");
         connector.setPreparedStatement(connector.getConnection().prepareStatement(connector.getSqlQuery()));
-        connector.getPreparedStatement().setInt(1, person.getId());
+        connector.getPreparedStatement().setString(1, person.getSurName());
+        connector.getPreparedStatement().setString(2, person.getFirstName());
+        connector.getPreparedStatement().setInt(3, person.getChildren());
+        connector.getPreparedStatement().setString(4, person.getRegion().toString());
+        connector.getPreparedStatement().setDate(5, Date.valueOf(person.getBirthDate()));
+        connector.getPreparedStatement().setString(6, person.getGender().toString());
+        connector.getPreparedStatement().setString(7, person.getAhvNumber());
         connector.getPreparedStatement().executeUpdate();
+
+        mainController.updateTable();
+        mainController.setIndexMax();
+        mainController.updateInfo();
+        System.out.println("Person created");
     }
 
 
@@ -99,6 +145,10 @@ public class DialogController {
         else
             return Gender.other;
 
+    }
+
+    public void sqlExceptionhandler(SQLException e) {
+        e.printStackTrace();
     }
 
 
