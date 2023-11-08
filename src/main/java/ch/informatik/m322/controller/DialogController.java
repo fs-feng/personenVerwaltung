@@ -7,6 +7,10 @@ import ch.informatik.m322.model.Region;
 import ch.informatik.m322.view.dialog.DialogMainView;
 import ch.informatik.m322.view.dialog.DialogWindow;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.regex.Pattern;
+
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.ZoneId;
@@ -134,6 +138,36 @@ public class DialogController {
         mainController.setIndexMax();
         mainController.updateInfo();
         System.out.println("Person created");
+    }
+
+    public boolean checkValidation(){
+        DialogMainView dialogMainView = dialogWindow.getDialogPanel().getMainView();
+        StringBuilder errorOutput = new StringBuilder();
+        //Check if firstname, lastname, children and ahvnumber are valid inputs.
+        if (dialogMainView.getFirstNameText().getText().isEmpty() || !Pattern.matches("[a-zA-Z]+",dialogMainView.getFirstNameText().getText())) {
+            errorOutput.append("First Name invalid\n");
+        }
+        if (dialogMainView.getSurNameText().getText().isEmpty() || !Pattern.matches("[a-zA-Z]+",dialogMainView.getSurNameText().getText())) {
+            errorOutput.append("Surname invalid\n");
+        }
+        if ((int) dialogMainView.getChildSpinner().getValue() > 127) {
+            errorOutput.append("Cannot have more than 127 children\n");
+        }
+        if (dialogMainView.getAhvField().getText().contains(" ")) {
+            errorOutput.append("AHV-Number invalid\n");
+        }
+        if (!dialogMainView.getRadioMen().isSelected() && !dialogMainView.getRadioOther().isSelected() && !dialogMainView.getRadioWomen().isSelected()) {
+            errorOutput.append("Gender not selected\n");
+        }
+        if (dialogMainView.getDatePicker().getDate() == null) {
+            errorOutput.append("Date invalid");
+        }
+
+        if(!errorOutput.toString().isEmpty()){
+            dialogWindow.getDialogPanel().createErrorMessage(errorOutput.toString());
+            return false;
+        }
+        return true;
     }
 
 

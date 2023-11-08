@@ -34,11 +34,14 @@ public class DialogListeners {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    dialogController.createNewPerson();
+                    if (dialogController.checkValidation()) {
+                        dialogController.createNewPerson();
+                        dialogWindow.dispose();
+                    }
                 } catch (SQLException ex) {
                     dialogController.sqlExceptionhandler(ex);
                 }
-                dialogWindow.dispose();
+
             }
         });
     }
@@ -48,11 +51,13 @@ public class DialogListeners {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    dialogController.updatePerson();
+                    if (dialogController.checkValidation()) {
+                        dialogController.updatePerson();
+                        dialogWindow.dispose();
+                    }
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                dialogWindow.dispose();
             }
         });
     }

@@ -16,7 +16,12 @@ public class DialogPanel extends JPanel {
         this.add(bottomView, BorderLayout.SOUTH);
     }
 
-
+    public void createErrorMessage(String errorMessage){
+        JTextArea textArea = new JTextArea(6, 30);
+        textArea.setText(errorMessage);
+        textArea.setEditable(false);
+        JOptionPane.showMessageDialog(this, new JScrollPane(textArea));
+    }
     public DialogMainView getMainView() {
         return mainView;
     }
