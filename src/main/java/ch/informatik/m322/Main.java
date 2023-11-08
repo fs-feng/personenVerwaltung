@@ -22,10 +22,6 @@ public class Main {
             MainController mainController = new MainController(mainWindow);
         });
 
-
-
-
-
         Connector connector = Connector.getInstance();
 
     }

@@ -69,6 +69,20 @@ public class MainController {
         }
     }
 
+    public void initInfo() throws SQLException {
+        connector.setSqlQuery("SELECT * FROM personen WHERE id=" + index);
+        connector.setStatement(connector.getConnection().createStatement());
+        connector.setResultSet(connector.getStatement().executeQuery(connector.getSqlQuery()));
+
+        if (connector.getResultSet().next()) {
+            getPersonInfo();
+            view.pack();
+        } else {
+            index++;
+            initInfo();
+        }
+    }
+
 
     public void updateInfo() throws SQLException {
 
@@ -78,26 +92,30 @@ public class MainController {
 
 
         if (connector.getResultSet().next()) {
-            person = new Person(connector.getResultSet().getInt("id"),
-                    connector.getResultSet().getString("name"),
-                    connector.getResultSet().getString("vorname"),
-                    Gender.valueOf(connector.getResultSet().getString("geschlecht")),
-                    connector.getResultSet().getDate("geburtsdatum").toLocalDate(),
-                    connector.getResultSet().getString("ahvnummer"),
-                    Region.valueOf(connector.getResultSet().getString("region")),
-                    connector.getResultSet().getInt("kinder"));
-
-            view.getMainPanel().getMainPanel().getInfoPanel().insertInfo(
-                    person.getId(),
-                    person.getSurName(),
-                    person.getFirstName(),
-                    person.getGender(),
-                    person.getBirthDate(),
-                    person.getAhvNumber(),
-                    person.getRegion(),
-                    person.getChildren()
-            );
+            getPersonInfo();
         }
+    }
+
+    private void getPersonInfo() throws SQLException {
+        person = new Person(connector.getResultSet().getInt("id"),
+                connector.getResultSet().getString("name"),
+                connector.getResultSet().getString("vorname"),
+                Gender.valueOf(connector.getResultSet().getString("geschlecht")),
+                connector.getResultSet().getDate("geburtsdatum").toLocalDate(),
+                connector.getResultSet().getString("ahvnummer"),
+                Region.valueOf(connector.getResultSet().getString("region")),
+                connector.getResultSet().getInt("kinder"));
+
+        view.getMainPanel().getMainPanel().getInfoPanel().insertInfo(
+                person.getId(),
+                person.getSurName(),
+                person.getFirstName(),
+                person.getGender(),
+                person.getBirthDate(),
+                person.getAhvNumber(),
+                person.getRegion(),
+                person.getChildren()
+        );
     }
 
     public void deletePerson() throws SQLException {

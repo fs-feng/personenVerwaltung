@@ -9,9 +9,6 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 public class DialogListeners {
-    private JButton btnCreate;
-    private JButton btnCancel;
-    private JButton btnEdit;
     private DialogWindow dialogWindow;
     private DialogController dialogController;
 
@@ -39,6 +36,7 @@ public class DialogListeners {
                         dialogWindow.dispose();
                     }
                 } catch (SQLException ex) {
+                    System.out.println(ex.getErrorCode());
                     dialogController.sqlExceptionhandler(ex);
                 }
 

@@ -154,7 +154,11 @@ public class MainListeners {
         window.addWindowListener(new WindowAdapter() {
             @Override
             public void windowOpened(WindowEvent e) {
-                System.out.println("Window opened");
+                try {
+                    mainController.initInfo();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
             @Override
             public void windowClosing(WindowEvent e) {
