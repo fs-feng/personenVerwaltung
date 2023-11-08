@@ -6,6 +6,9 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+/**
+ * @TODO
+ */
 public class Person {
     private int id;
     private String surName;
@@ -38,6 +41,16 @@ public class Person {
         this.children = children;
     }
 
+    /**
+     * @TODO
+     * @param surName
+     * @param firstName
+     * @param gender
+     * @param birthDate
+     * @param ahvNumber
+     * @param region
+     * @param children
+     */
     public Person(String surName, String firstName, Gender gender, Date birthDate, String ahvNumber, Region region, int children) {
         this.surName = surName;
         this.firstName = firstName;
@@ -48,64 +61,122 @@ public class Person {
         this.children = children;
     }
 
-
-    //getter setter
+    /**
+     * @TODO
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public String getSurName() {
         return surName;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public Gender getGender() {
         return gender;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public LocalDate getBirthDate() {
         return birthDate;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public String getAhvNumber() {
         return ahvNumber;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public Region getRegion() {
         return region;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public int getChildren() {
         return children;
     }
 
+    /**
+     * @TODO
+     * @param surName
+     */
     public void setSurName(String surName) {
         this.surName = surName;
     }
 
+    /**
+     * @TODO
+     * @param firstName
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * @TODO
+     * @param gender
+     */
     public void setGender(Gender gender) {
         this.gender = gender;
     }
 
+    /**
+     * @TODO
+     * @param birthDate
+     */
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
+    /**
+     * @TODO
+     * @param ahvNumber
+     */
     public void setAhvNumber(String ahvNumber) {
         this.ahvNumber = ahvNumber;
     }
 
+    /**
+     * @TODO
+     * @param region
+     */
     public void setRegion(Region region) {
         this.region = region;
     }
 
+    /**
+     * @TODO
+     * @param children
+     */
     public void setChildren(int children) {
         this.children = children;
     }

@@ -1,5 +1,8 @@
 package ch.informatik.m322.model;
 
+/**
+ * @TODO
+ */
 public enum Region {
     Aargau, Appenzell_Innerrhoden, Appenzell_Ausserrhoden,
     Bern, Basel_Landschaft, Basel_Stadt,

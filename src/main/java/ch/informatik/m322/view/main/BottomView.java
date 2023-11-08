@@ -3,6 +3,9 @@ package ch.informatik.m322.view.main;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @TODO
+ */
 public class BottomView extends JPanel {
     private JPanel leftHolder;
     private JPanel rightHolder;
@@ -14,7 +17,9 @@ public class BottomView extends JPanel {
     private JButton btnDeletePerson;
     private JButton btnEditPerson;
 
-
+    /**
+     * @TODO
+     */
     public BottomView() {
         super(new BorderLayout());
 
@@ -40,23 +45,42 @@ public class BottomView extends JPanel {
         this.add(rightHolder, BorderLayout.CENTER);
     }
 
-    //getter and setter
+    /**
+     * @TODO
+     * @return
+     */
     public JButton getBtnSwitchLeft() {
         return btnSwitchLeft;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public JButton getBtnSwitchRight() {
         return btnSwitchRight;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public JButton getBtnCreatePerson() {
         return btnCreatePerson;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public JButton getBtnDeletePerson() {
         return btnDeletePerson;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public JButton getBtnEditPerson() {
         return btnEditPerson;
     }

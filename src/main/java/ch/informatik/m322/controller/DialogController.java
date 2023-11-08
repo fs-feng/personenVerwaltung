@@ -15,6 +15,9 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.ZoneId;
 
+/**
+ * @TODO
+ */
 public class DialogController {
     private DialogListeners dialogListeners;
     private DialogWindow dialogData;
@@ -23,13 +26,19 @@ public class DialogController {
     private Connector connector;
     private MainController mainController;
 
+    /**
+     * @TODO
+     * @param mainController
+     */
     public DialogController(MainController mainController) {
         dialogListeners = new DialogListeners(this);
         connector = Connector.getInstance();
         this.mainController = mainController;
     }
 
-
+    /**
+     * @TODO
+     */
     public void setupCreateDialog() {
         dialogWindow = new DialogWindow("create person");
         dialogListeners.setDialogWindow(dialogWindow);
@@ -37,6 +46,10 @@ public class DialogController {
         dialogListeners.setupCancel(dialogWindow.getDialogPanel().getBottomView().getCancelButton());
     }
 
+    /**
+     * @TODO
+     * @param person
+     */
     public void setupEditDialog(Person person) {
         this.person = person;
         dialogWindow = new DialogWindow("save person");
@@ -46,6 +59,9 @@ public class DialogController {
         dialogListeners.setupCancel(dialogWindow.getDialogPanel().getBottomView().getCancelButton());
     }
 
+    /**
+     * @TODO
+     */
     public void setPersonData() {
         dialogWindow.getDialogPanel().getMainView().getFirstNameText().setText(person.getFirstName());
         dialogWindow.getDialogPanel().getMainView().getSurNameText().setText(person.getSurName());
@@ -58,6 +74,10 @@ public class DialogController {
         System.out.println(this.person.getBirthDate().toString());
     }
 
+    /**
+     * @TODO
+     * @param gender
+     */
     private void setGenderRadioButton(Gender gender) {
         switch (gender) {
             case male:
@@ -74,6 +94,10 @@ public class DialogController {
         }
     }
 
+    /**
+     * @TODO
+     * @throws SQLException
+     */
     public void updatePerson() throws SQLException {
         DialogMainView mainView = dialogWindow.getDialogPanel().getMainView();
 
@@ -109,6 +133,10 @@ public class DialogController {
         mainController.updateInfo();
     }
 
+    /**
+     * @TODO
+     * @throws SQLException
+     */
     public void createNewPerson() throws SQLException {
         DialogMainView dialogMainView = dialogWindow.getDialogPanel().getMainView();
         person = new Person(
@@ -140,6 +168,10 @@ public class DialogController {
         System.out.println("Person created");
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean checkValidation(){
         DialogMainView dialogMainView = dialogWindow.getDialogPanel().getMainView();
         StringBuilder errorOutput = new StringBuilder();
@@ -170,7 +202,11 @@ public class DialogController {
         return true;
     }
 
-
+    /**
+     * @TODO
+     * @param dialogMainView
+     * @return
+     */
     private Gender getRadioGender(DialogMainView dialogMainView) {
         if (dialogMainView.getRadioMen().isSelected())
             return Gender.male;
@@ -181,11 +217,18 @@ public class DialogController {
 
     }
 
+    /**
+     * @TODO
+     * @param e
+     */
     public void sqlExceptionhandler(SQLException e) {
         e.printStackTrace();
     }
 
-
+    /**
+     * @TODO
+     * @return
+     */
     public DialogListeners getDialogListeners() {
         return dialogListeners;
     }

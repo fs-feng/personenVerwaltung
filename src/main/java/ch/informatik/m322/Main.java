@@ -6,7 +6,14 @@ import ch.informatik.m322.view.main.MainWindow;
 
 import javax.swing.*;
 
+/**
+ * @TODO
+ */
 public class Main {
+    /**
+     * @TODO
+     * @param args
+     */
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {

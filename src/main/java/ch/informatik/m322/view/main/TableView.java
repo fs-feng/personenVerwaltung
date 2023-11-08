@@ -3,6 +3,9 @@ package ch.informatik.m322.view.main;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * @TODO
+ */
 public class TableView extends JPanel {
     private JTable personenTabelle;
 
@@ -10,6 +13,10 @@ public class TableView extends JPanel {
     String[] columns = {"ID", "surname", "firstname", "gender", "birthdate", "AHV-number", "region", "children"};
 
     private DefaultTableModel model;
+
+    /**
+     * @TODO
+     */
     public TableView() {
         model = new DefaultTableModel(null, columns) {
             @Override
@@ -22,11 +29,18 @@ public class TableView extends JPanel {
         this.add(test);
     }
 
-
+    /**
+     * @TODO
+     * @return
+     */
     public DefaultTableModel getModel() {
         return model;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public JTable getPersonenTabelle() {
         return personenTabelle;
     }

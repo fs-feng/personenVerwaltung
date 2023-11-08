@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
 
+/**
+ * @TODO
+ */
 public class MainController {
     private Connector connector;
     private MainListeners mainActionListeners;
@@ -20,7 +23,10 @@ public class MainController {
     private int index;
     private DialogController dialogController;
 
-
+    /**
+     * @TODO
+     * @param mainWindow
+     */
     public MainController(MainWindow mainWindow) {
         connector = Connector.getInstance();
         dialogController = new DialogController(this);
@@ -45,6 +51,10 @@ public class MainController {
         }
     }
 
+    /**
+     * @TODO
+     * @throws SQLException
+     */
     public void updateTable() throws SQLException {
         DefaultTableModel tableModel = view.getMainPanel().getMainPanel().getPersonenTable().getModel();
         tableModel.getDataVector().removeAllElements();
@@ -69,6 +79,10 @@ public class MainController {
         }
     }
 
+    /**
+     * @TODO
+     * @throws SQLException
+     */
     public void initInfo() throws SQLException {
         connector.setSqlQuery("SELECT * FROM personen WHERE id=" + index);
         connector.setStatement(connector.getConnection().createStatement());
@@ -83,7 +97,10 @@ public class MainController {
         }
     }
 
-
+    /**
+     * @TODO
+     * @throws SQLException
+     */
     public void updateInfo() throws SQLException {
 
         connector.setSqlQuery("SELECT * FROM personen WHERE id=" + index);
@@ -96,6 +113,10 @@ public class MainController {
         }
     }
 
+    /**
+     * @TODO
+     * @throws SQLException
+     */
     private void getPersonInfo() throws SQLException {
         person = new Person(connector.getResultSet().getInt("id"),
                 connector.getResultSet().getString("name"),
@@ -118,6 +139,10 @@ public class MainController {
         );
     }
 
+    /**
+     * @TODO
+     * @throws SQLException
+     */
     public void deletePerson() throws SQLException {
         connector.setSqlQuery("DELETE FROM personen WHERE id = ?");
         connector.setPreparedStatement(connector.getConnection().prepareStatement(connector.getSqlQuery()));
@@ -125,24 +150,42 @@ public class MainController {
         connector.getPreparedStatement().executeUpdate();
     }
 
+    /**
+     * @TODO
+     */
     public void setIndexMax() {
         DefaultTableModel personenTableModel = view.getMainPanel().getMainPanel().getPersonenTable().getModel();
         index = (int) personenTableModel.getDataVector().elementAt(personenTableModel.getRowCount()-1).elementAt(0);
     }
 
-
+    /**
+     * @TODO
+     * @return
+     */
     public DialogController getDialogController() {
         return dialogController;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public Person getPerson() {
         return person;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public int getIndex() {
         return index;
     }
 
+    /**
+     * @TODO
+     * @param index
+     */
     public void setIndex(int index) {
         this.index = index;
     }

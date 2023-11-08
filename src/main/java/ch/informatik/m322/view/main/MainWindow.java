@@ -4,9 +4,15 @@ import ch.informatik.m322.Main;
 
 import javax.swing.*;
 
+/**
+ * @TODO
+ */
 public class MainWindow extends JFrame {
     private MainPanel mainPanel;
 
+    /**
+     * @TODO
+     */
     public MainWindow() {
         super("Personen Verwaltung");
         mainPanel = new MainPanel();
@@ -18,6 +24,10 @@ public class MainWindow extends JFrame {
         this.pack();
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public MainPanel getMainPanel() {
         return mainPanel;
     }

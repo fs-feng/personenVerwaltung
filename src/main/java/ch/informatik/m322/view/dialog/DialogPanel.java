@@ -3,9 +3,17 @@ package ch.informatik.m322.view.dialog;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @TODO
+ */
 public class DialogPanel extends JPanel {
     private DialogMainView mainView;
     private DialogBottomView bottomView;
+
+    /**
+     * @TODO
+     * @param actionString
+     */
     public DialogPanel(String actionString) {
         super(new BorderLayout());
         mainView = new DialogMainView();
@@ -16,16 +24,29 @@ public class DialogPanel extends JPanel {
         this.add(bottomView, BorderLayout.SOUTH);
     }
 
+    /**
+     * @TODO
+     * @param errorMessage
+     */
     public void createErrorMessage(String errorMessage){
         JTextArea textArea = new JTextArea(6, 30);
         textArea.setText(errorMessage);
         textArea.setEditable(false);
         JOptionPane.showMessageDialog(this, new JScrollPane(textArea));
     }
+
+    /**
+     * @TODO
+     * @return
+     */
     public DialogMainView getMainView() {
         return mainView;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public DialogBottomView getBottomView() {
         return bottomView;
     }

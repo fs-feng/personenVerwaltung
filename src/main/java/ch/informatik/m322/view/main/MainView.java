@@ -5,10 +5,16 @@ import ch.informatik.m322.Main;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * @TODO
+ */
 public class MainView extends JPanel {
     private TableView personenTable;
     private InfoView infoPanel;
 
+    /**
+     * @TODO
+     */
     public MainView() {
         super(new BorderLayout());
 
@@ -19,10 +25,18 @@ public class MainView extends JPanel {
         this.add(infoPanel, BorderLayout.WEST);
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public TableView getPersonenTable() {
         return personenTable;
     }
 
+    /**
+     * @TODO
+     * @return
+     */
     public InfoView getInfoPanel() {
         return infoPanel;
     }

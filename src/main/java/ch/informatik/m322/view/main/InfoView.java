@@ -8,6 +8,9 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.util.Date;
 
+/**
+ * @TODO
+ */
 public class InfoView extends JPanel {
     private JLabel labelId;
     private JLabel labelSurName;
@@ -30,6 +33,9 @@ public class InfoView extends JPanel {
     private JPanel labelHolder;
     private JPanel labelValueHolder;
 
+    /**
+     * @TODO
+     */
     public InfoView() {
         super(new BorderLayout());
 
@@ -75,6 +81,17 @@ public class InfoView extends JPanel {
         this.add(labelValueHolder, BorderLayout.CENTER);
     }
 
+    /**
+     * @TODO
+     * @param id
+     * @param surName
+     * @param firstName
+     * @param gender
+     * @param birthDate
+     * @param ahvNumber
+     * @param region
+     * @param children
+     */
     public void insertInfo(int id, String surName, String firstName, Gender gender, LocalDate birthDate, String ahvNumber, Region region, int children) {
         labelIdValue.setText(Integer.toString(id));
         labelSurNameValue.setText(surName);
@@ -86,6 +103,9 @@ public class InfoView extends JPanel {
         labelChildrenValue.setText(Integer.toString(children));
     }
 
+    /**
+     * @TODO
+     */
     public void setupActionListener() {
 
     }
