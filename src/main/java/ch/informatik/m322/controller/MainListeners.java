@@ -72,7 +72,7 @@ public class MainListeners {
         btnSwitchLeft.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (mainController.getIndex() > 1 ) {
+                if (mainController.getIndex() > (int) personenTableModel.getDataVector().firstElement().elementAt(0) ) {
                     try {
                         mainController.setIndex(mainController.getIndex() - 1);
                         mainController.updateInfo();

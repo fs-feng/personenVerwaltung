@@ -78,11 +78,10 @@ public class DialogController {
         dialogWindow.getDialogPanel().getMainView().getSurNameText().setText(person.getSurName());
         dialogWindow.getDialogPanel().getMainView().getAhvField().setText(person.getAhvNumber());
         dialogWindow.getDialogPanel().getMainView().getDatePicker().setDate(Date.from(person.getBirthDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        System.out.println(person.getBirthDate().toString());
+
         dialogWindow.getDialogPanel().getMainView().getChildSpinner().setValue(person.getChildren());
         dialogWindow.getDialogPanel().getMainView().getCombobox().setSelectedItem(person.getRegion());
         setGenderRadioButton(person.getGender());
-        System.out.println(this.person.getBirthDate().toString());
     }
 
     /**
