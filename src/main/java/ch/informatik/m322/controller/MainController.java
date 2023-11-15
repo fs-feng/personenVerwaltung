@@ -13,7 +13,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 /**
- * @TODO
+ * Controller handling actions and data flow for the main application view.
  */
 public class MainController {
     private Connector connector;
@@ -24,8 +24,9 @@ public class MainController {
     private DialogController dialogController;
 
     /**
-     * @TODO
-     * @param mainWindow
+     * Constructs the MainController for managing the main application view.
+     *
+     * @param mainWindow the main window of the application
      */
     public MainController(MainWindow mainWindow) {
         connector = Connector.getInstance();
@@ -52,8 +53,9 @@ public class MainController {
     }
 
     /**
-     * @TODO
-     * @throws SQLException
+     * Updates the table view with data from the database.
+     *
+     * @throws SQLException if a SQL exception occurs
      */
     public void updateTable() throws SQLException {
         DefaultTableModel tableModel = view.getMainPanel().getMainPanel().getPersonenTable().getModel();
@@ -80,8 +82,9 @@ public class MainController {
     }
 
     /**
-     * @TODO
-     * @throws SQLException
+     * Initializes information view with data from the database.
+     *
+     * @throws SQLException if a SQL exception occurs
      */
     public void initInfo() throws SQLException {
         connector.setSqlQuery("SELECT * FROM personen WHERE id=" + index);
@@ -98,8 +101,9 @@ public class MainController {
     }
 
     /**
-     * @TODO
-     * @throws SQLException
+     * Updates information view with data from the database based on the current index.
+     *
+     * @throws SQLException if a SQL exception occurs
      */
     public void updateInfo() throws SQLException {
 
@@ -114,8 +118,9 @@ public class MainController {
     }
 
     /**
-     * @TODO
-     * @throws SQLException
+     * Retrieves person information from the database and updates the information view.
+     *
+     * @throws SQLException if a SQL exception occurs
      */
     private void getPersonInfo() throws SQLException {
         person = new Person(connector.getResultSet().getInt("id"),
@@ -140,8 +145,9 @@ public class MainController {
     }
 
     /**
-     * @TODO
-     * @throws SQLException
+     * Deletes a person from the database.
+     *
+     * @throws SQLException if a SQL exception occurs
      */
     public void deletePerson() throws SQLException {
         connector.setSqlQuery("DELETE FROM personen WHERE id = ?");
@@ -151,40 +157,33 @@ public class MainController {
     }
 
     /**
-     * @TODO
-     */
-    public void setIndexMax() {
-        DefaultTableModel personenTableModel = view.getMainPanel().getMainPanel().getPersonenTable().getModel();
-        index = (int) personenTableModel.getDataVector().elementAt(personenTableModel.getRowCount()-1).elementAt(0);
-    }
-
-    /**
-     * @TODO
-     * @return
+     * Gets the dialog controller associated with this MainController.
+     * @return the dialog controller
      */
     public DialogController getDialogController() {
         return dialogController;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the currently selected person.
+     * @return the currently selected person
      */
     public Person getPerson() {
         return person;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the current index value.
+     * @return the current index value
      */
     public int getIndex() {
         return index;
     }
 
     /**
-     * @TODO
-     * @param index
+     * Sets the current index value.
+     *
+     * @param index the new index value to set
      */
     public void setIndex(int index) {
         this.index = index;
