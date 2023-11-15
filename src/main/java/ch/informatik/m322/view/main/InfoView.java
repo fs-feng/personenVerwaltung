@@ -103,10 +103,5 @@ public class InfoView extends JPanel {
         labelChildrenValue.setText(Integer.toString(children));
     }
 
-    /**
-     * Sets up action listeners for interactive components within the panel.
-     */
-    public void setupActionListener() {
-        // @TODO: @frank:
-    }
+
 }

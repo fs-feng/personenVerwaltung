@@ -165,7 +165,9 @@ public class MainListeners {
     }
 
     /**
-     * @TODO
+     * Sets up the selection listeners for the person table.
+     * In order for them to be clickable and return the selected index to access the
+     * right person.
      */
     private void setupTableSelectionListener() {
         personenTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {

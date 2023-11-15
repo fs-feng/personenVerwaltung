@@ -82,6 +82,14 @@ public class MainController {
     }
 
     /**
+     * Sets the index to the last element of the data vector.
+     */
+    public void setIndexMax() {
+        DefaultTableModel personenTableModel = view.getMainPanel().getMainPanel().getPersonenTable().getModel();
+        index = (int) personenTableModel.getDataVector().elementAt(personenTableModel.getRowCount()-1).elementAt(0);
+    }
+
+    /**
      * Initializes information view with data from the database.
      *
      * @throws SQLException if a SQL exception occurs
