@@ -7,12 +7,20 @@ import ch.informatik.m322.view.main.MainWindow;
 import javax.swing.*;
 
 /**
- * @TODO
+ * Entry point for the application. Initializes the main window, controller, and sets the
+ * look and feel. Additionally, establishes a database connection.
+ *
+ * The applications GUI is executed on startup.
  */
 public class Main {
     /**
-     * @TODO
-     * @param args
+     * Main entry point for the application.
+     * Creates main window as gui and main controller as well as add the main window
+     * to the main controller.
+     *
+     * The look and feel is set to windows to clean up the GUI.
+     *
+     * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
 

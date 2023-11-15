@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @TODO
+ * The main panel of the application's graphical user interface. This JPanel
+ * contains a MainView at the center and a BottomView at the bottom. It uses a
+ * BorderLayout to organize the components.
  */
 public class MainPanel extends JPanel {
 
@@ -12,7 +14,8 @@ public class MainPanel extends JPanel {
     private MainView mainPanel;
 
     /**
-     * @TODO
+     * Constructs a new MainPanel with BorderLayout. Initializes and adds the MainView
+     * to the center and the BottomView to the south.
      */
     public MainPanel() {
         super(new BorderLayout());
@@ -25,16 +28,18 @@ public class MainPanel extends JPanel {
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the BottomView associated with this MainPanel.
+     *
+     * @return The BottomView instance.
      */
     public BottomView getBottomPanel() {
         return bottomPanel;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the MainView associated with this MainPanel.
+     *
+     * @return The MainView instance.
      */
     public MainView getMainPanel() {
         return mainPanel;

@@ -17,6 +17,7 @@ public class DialogListeners {
 
     /**
      * constructor
+     *
      * @param dialogController
      */
     public DialogListeners(DialogController dialogController) {
@@ -26,6 +27,7 @@ public class DialogListeners {
     /**
      * setup ActionListener for the cancel-button in DialogWindow
      * when clicking the button, dialogWindow closes
+     *
      * @param btnCancel
      */
     public void setupCancel(JButton btnCancel) {
@@ -43,6 +45,7 @@ public class DialogListeners {
      * when the button is clicked, checkValidation() is executed
      * if checkValidation() returns true, createNewPerson() is executed and dialogWindow disposes
      * Errors will be handled with try-catch
+     *
      * @param btnCreate
      */
     public void setupCreate(JButton btnCreate) {
@@ -68,6 +71,7 @@ public class DialogListeners {
      * when the button is clicked, checkValidation() is executed
      * if checkValidation() returns true, updatePerson() is executed and dialogWindow disposes
      * Errors will be handled with try-catch
+     *
      * @param btnEdit
      */
     public void setupEdit(JButton btnEdit) {
@@ -88,6 +92,7 @@ public class DialogListeners {
 
     /**
      * setup the dialogWindow
+     *
      * @param dialogWindow
      */
     public void setDialogWindow(DialogWindow dialogWindow) {

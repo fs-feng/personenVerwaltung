@@ -1,17 +1,18 @@
 package ch.informatik.m322.view.main;
 
-import ch.informatik.m322.Main;
-
 import javax.swing.*;
 
 /**
- * @TODO
+ * The main window of the application, representing the graphical user interface for
+ * managing persons. It extends the JFrame class and contains a MainPanel for displaying
+ * the main content.
  */
 public class MainWindow extends JFrame {
     private MainPanel mainPanel;
 
     /**
-     * @TODO
+     * Constructs a new MainWindow with the title "Personen Verwaltung". Initializes the
+     * MainPanel, sets default window behaviors, and displays the window.
      */
     public MainWindow() {
         super("Personen Verwaltung");
@@ -25,8 +26,9 @@ public class MainWindow extends JFrame {
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the MainPanel associated with this MainWindow.
+     *
+     * @return The MainPanel instance.
      */
     public MainPanel getMainPanel() {
         return mainPanel;

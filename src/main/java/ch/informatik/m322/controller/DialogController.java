@@ -16,7 +16,11 @@ import java.sql.SQLException;
 import java.time.ZoneId;
 
 /**
- * @TODO
+ * The `DialogController` class manages the interaction between the graphical user interface (GUI)
+ * and the underlying data model for creating and editing person records. It handles the setup
+ * of dialog windows for creating and editing persons, as well as updating the database with the
+ * modified or newly created person data. This class also provides methods for validating user input
+ * and handling SQL exceptions.
  */
 public class DialogController {
     private DialogListeners dialogListeners;
@@ -27,8 +31,10 @@ public class DialogController {
     private MainController mainController;
 
     /**
-     * @TODO
-     * @param mainController
+     * Constructs a new DialogController with the specified MainController.
+     * dialoglistner is created and the dialogcontroller is a param for the dialoglisteners
+     *
+     * @param mainController mainController The main controller of the program.
      */
     public DialogController(MainController mainController) {
         dialogListeners = new DialogListeners(this);
@@ -37,22 +43,26 @@ public class DialogController {
     }
 
     /**
-     * @TODO
+     * Sets up the dialog window for creating a new person. This method initializes the necessary
+     * components and sets up the buttons necessary for editing and creating persons for the create dialog.
      */
     public void setupCreateDialog() {
-        dialogWindow = new DialogWindow("create person");
+        dialogWindow = new DialogWindow("create person", "create person");
         dialogListeners.setDialogWindow(dialogWindow);
         dialogListeners.setupCreate(dialogWindow.getDialogPanel().getBottomView().getActionButton());
         dialogListeners.setupCancel(dialogWindow.getDialogPanel().getBottomView().getCancelButton());
     }
 
     /**
-     * @TODO
-     * @param person
+     * Sets up the dialog window for editing an existing person. This method initializes the necessary
+     * components, populates the fields with the person's data, and sets up the event listeners for the
+     * edit dialog.
+     *
+     * @param person The currently selected person to be edited
      */
     public void setupEditDialog(Person person) {
         this.person = person;
-        dialogWindow = new DialogWindow("save person");
+        dialogWindow = new DialogWindow("save person", "edit person");
         setPersonData();
         dialogListeners.setDialogWindow(dialogWindow);
         dialogListeners.setupEdit(dialogWindow.getDialogPanel().getBottomView().getActionButton());
@@ -60,7 +70,8 @@ public class DialogController {
     }
 
     /**
-     * @TODO
+     * Populates the dialog window with the data of the currently edited person. This method is called
+     * when setting up the edit dialog.
      */
     public void setPersonData() {
         dialogWindow.getDialogPanel().getMainView().getFirstNameText().setText(person.getFirstName());
@@ -75,8 +86,9 @@ public class DialogController {
     }
 
     /**
-     * @TODO
-     * @param gender
+     * Sets the radio button for the specified gender in the edit dialog window.
+     *
+     * @param gender The gender to be set from the person.
      */
     private void setGenderRadioButton(Gender gender) {
         switch (gender) {
@@ -85,18 +97,18 @@ public class DialogController {
                 break;
             case female:
                 dialogWindow.getDialogPanel().getMainView().getRadioWomen().setSelected(true);
-                System.out.println("test1");
                 break;
             case other:
                 dialogWindow.getDialogPanel().getMainView().getRadioOther().setSelected(true);
-                System.out.println("test2");
                 break;
         }
     }
 
     /**
-     * @TODO
-     * @throws SQLException
+     * Updates the database with the modified person data after editing with a prepared statement
+     * the main controller updates the table and info view.
+     *
+     * @throws SQLException If a SQL exception occurs during the update.
      */
     public void updatePerson() throws SQLException {
         DialogMainView mainView = dialogWindow.getDialogPanel().getMainView();
@@ -134,8 +146,11 @@ public class DialogController {
     }
 
     /**
-     * @TODO
-     * @throws SQLException
+     * Creates a new person with the entered data, updates the database with a prepared statement.
+     * The main controller updates the table and info view.
+     * The index will be set to the max of in order to show the new person in the info view.
+     *
+     * @throws SQLException If a SQL exception occurs during the creation.
      */
     public void createNewPerson() throws SQLException {
         DialogMainView dialogMainView = dialogWindow.getDialogPanel().getMainView();
@@ -169,8 +184,9 @@ public class DialogController {
     }
 
     /**
+     * Checks the validation of user input locally in the dialog window, displaying error messages for invalid input.
      *
-     * @return
+     * @return True if the input is valid and false otherwise.
      */
     public boolean checkValidation(){
         DialogMainView dialogMainView = dialogWindow.getDialogPanel().getMainView();
@@ -203,9 +219,10 @@ public class DialogController {
     }
 
     /**
-     * @TODO
-     * @param dialogMainView
-     * @return
+     * Retrieves the selected gender from the dialog window radio buttons.
+     *
+     * @param dialogMainView The main view to access gender radio buttons.
+     * @return The selected enum gender.
      */
     private Gender getRadioGender(DialogMainView dialogMainView) {
         if (dialogMainView.getRadioMen().isSelected())
@@ -218,18 +235,12 @@ public class DialogController {
     }
 
     /**
-     * @TODO
-     * @param e
+     * Handles SQL exceptions by printing the stack trace.
+     *
+     * @param e The SQLException to be handled.
      */
     public void sqlExceptionhandler(SQLException e) {
         e.printStackTrace();
     }
 
-    /**
-     * @TODO
-     * @return
-     */
-    public DialogListeners getDialogListeners() {
-        return dialogListeners;
-    }
 }

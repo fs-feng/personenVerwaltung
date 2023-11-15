@@ -1,7 +1,8 @@
 package ch.informatik.m322.model;
 
 /**
- * @TODO
+ * The Region enum represents the possible regions in Switzerland.
+ * The enumerated values cover a selection of cantons, each representing a specific region within Switzerland.
  */
 public enum Region {
     Aargau, Appenzell_Innerrhoden, Appenzell_Ausserrhoden,

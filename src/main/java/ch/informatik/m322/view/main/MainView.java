@@ -1,7 +1,5 @@
 package ch.informatik.m322.view.main;
 
-import ch.informatik.m322.Main;
-
 import javax.swing.*;
 import java.awt.*;
 

@@ -12,7 +12,8 @@ public class DialogWindow extends JDialog {
      * @TODO
      * @param actionString
      */
-    public DialogWindow(String actionString) {
+    public DialogWindow(String actionString, String title) {
+        this.setTitle(title);
         dialogPanel = new DialogPanel(actionString);
         this.add(dialogPanel);
 
