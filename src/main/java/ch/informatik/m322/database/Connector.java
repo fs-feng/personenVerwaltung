@@ -39,7 +39,7 @@ public class Connector {
     private Connector() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            String jdbcUrl = "jdbc:mariadb://192.168.1.215:3306/personenVerwaltung";
+            String jdbcUrl = "jdbc:mariadb://frank-feng.synology.me:3306/personenVerwaltung";
             String username = "user_personenVerwaltung";
             String password = "n/QOXwoEFg!c5yV2";
 
