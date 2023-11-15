@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 /**
- * @TODO
+ * Represents a panel displaying information about a person.
  */
 public class InfoView extends JPanel {
     private JLabel labelId;
@@ -34,7 +34,7 @@ public class InfoView extends JPanel {
     private JPanel labelValueHolder;
 
     /**
-     * @TODO
+     * Constructs an InfoView panel for displaying person information.
      */
     public InfoView() {
         super(new BorderLayout());
@@ -82,15 +82,15 @@ public class InfoView extends JPanel {
     }
 
     /**
-     * @TODO
-     * @param id
-     * @param surName
-     * @param firstName
-     * @param gender
-     * @param birthDate
-     * @param ahvNumber
-     * @param region
-     * @param children
+     * Inserts information about a person into the view.
+     * @param id the ID of the person
+     * @param surName the surname of the person
+     * @param firstName the first name of the person
+     * @param gender the gender of the person
+     * @param birthDate the birth date of the person
+     * @param ahvNumber the AHV number of the person
+     * @param region the region of the person
+     * @param children the number of children the person has
      */
     public void insertInfo(int id, String surName, String firstName, Gender gender, LocalDate birthDate, String ahvNumber, Region region, int children) {
         labelIdValue.setText(Integer.toString(id));
@@ -104,9 +104,9 @@ public class InfoView extends JPanel {
     }
 
     /**
-     * @TODO
+     * Sets up action listeners for interactive components within the panel.
      */
     public void setupActionListener() {
-
+        // @TODO: @frank:
     }
 }

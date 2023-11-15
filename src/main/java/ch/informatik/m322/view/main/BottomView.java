@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @TODO
+ * Represents the bottom view panel with buttons for user interaction.
+ * The buttons are: switch left, switch right, create person, delete person, edit person.
  */
 public class BottomView extends JPanel {
     private JPanel leftHolder;
@@ -18,7 +19,7 @@ public class BottomView extends JPanel {
     private JButton btnEditPerson;
 
     /**
-     * @TODO
+     * Constructs a BottomView panel with buttons for user interaction.
      */
     public BottomView() {
         super(new BorderLayout());
@@ -29,7 +30,6 @@ public class BottomView extends JPanel {
         btnCreatePerson = new JButton("new person");
         btnDeletePerson = new JButton("delete person");
         btnEditPerson = new JButton("edit person");
-
 
         leftHolder = new JPanel();
         rightHolder = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -46,40 +46,40 @@ public class BottomView extends JPanel {
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the button for switching left.
+     * @return the button for switching left
      */
     public JButton getBtnSwitchLeft() {
         return btnSwitchLeft;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the button for switching right.
+     * @return the button for switching right
      */
     public JButton getBtnSwitchRight() {
         return btnSwitchRight;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the button for creating a new person.
+     * @return the button for creating a new person
      */
     public JButton getBtnCreatePerson() {
         return btnCreatePerson;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the button for deleting a person.
+     * @return the button for deleting a person
      */
     public JButton getBtnDeletePerson() {
         return btnDeletePerson;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the button for editing a person.
+     * @return the button for editing a person
      */
     public JButton getBtnEditPerson() {
         return btnEditPerson;
