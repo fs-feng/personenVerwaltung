@@ -8,7 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @TODO
+ * This class represents the main dialog view in the application.
+ * It extends JPanel and contains various input fields and labels to collect user data.
  */
 public class DialogMainView extends JPanel {
     private JLabel labelId;
@@ -43,7 +44,8 @@ public class DialogMainView extends JPanel {
     private JPanel genderHolder;
 
     /**
-     * @TODO
+     * Constructor for the DialogMainView class.
+     * It initializes all the components and adds them to the panel.
      */
     public DialogMainView() {
         super(new BorderLayout());
@@ -118,160 +120,170 @@ public class DialogMainView extends JPanel {
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the JTextField representing the first name of the user.
+     * @return the JTextField representing the first name of the user
      */
     public JTextField getFirstNameText() {
         return firstNameText;
     }
 
     /**
-     * @TODO
-     * @param firstNameText
+     * Sets the JTextField representing the first name of the user.
+     *
+     * @param firstNameText the JTextField representing the first name of the user
      */
     public void setFirstNameText(JTextField firstNameText) {
         this.firstNameText = firstNameText;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the JTextField representing the surname of the user.
+     * @return the JTextField representing the surname of the user
      */
     public JTextField getSurNameText() {
         return surNameText;
     }
 
     /**
-     * @TODO
-     * @param surNameText
+     * Sets the JTextField representing the surname of the user.
+     *
+     * @param surNameText the JTextField representing the surname of the user
      */
     public void setSurNameText(JTextField surNameText) {
         this.surNameText = surNameText;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the JRadioButton representing female gender.
+     * @return the JRadioButton representing female gender
      */
     public JRadioButton getRadioWomen() {
         return radioWomen;
     }
 
     /**
-     * @TODO
-     * @param radioWomen
+     * Sets the JRadioButton representing female gender.
+     *
+     * @param radioWomen the JRadioButton representing female gender
      */
     public void setRadioWomen(JRadioButton radioWomen) {
         this.radioWomen = radioWomen;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the JRadioButton representing male gender.
+     * @return the JRadioButton representing male gender
      */
     public JRadioButton getRadioMen() {
         return radioMen;
     }
 
     /**
-     * @TODO
-     * @param radioMen
+     * Sets the JRadioButton representing male gender.
+     *
+     * @param radioMen the JRadioButton representing male gender
      */
     public void setRadioMen(JRadioButton radioMen) {
         this.radioMen = radioMen;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the JRadioButton representing other gender.
+     * @return the JRadioButton representing other gender
      */
     public JRadioButton getRadioOther() {
         return radioOther;
     }
 
     /**
-     * @TODO
-     * @param radioOther
+     * Sets the JRadioButton representing other gender.
+     *
+     * @param radioOther the JRadioButton representing other gender
      */
     public void setRadioOther(JRadioButton radioOther) {
         this.radioOther = radioOther;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the ButtonGroup for gender selection.
+     * @return the ButtonGroup for gender selection
      */
     public ButtonGroup getGenderGroup() {
         return genderGroup;
     }
 
     /**
-     * @TODO
-     * @param genderGroup
+     * Sets the ButtonGroup for gender selection.
+     *
+     * @param genderGroup the ButtonGroup for gender selection
      */
     public void setGenderGroup(ButtonGroup genderGroup) {
         this.genderGroup = genderGroup;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the JDateChooser for date selection.
+     * @return the JDateChooser for date selection
      */
     public JDateChooser getDatePicker() {
         return datePicker;
     }
 
     /**
-     * @TODO
-     * @param datePicker
+     * Sets the JDateChooser for date selection.
+     *
+     * @param datePicker the JDateChooser for date selection
      */
     public void setDatePicker(JDateChooser datePicker) {
         this.datePicker = datePicker;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the FormattedField for AHV information.
+     * @return the FormattedField for AHV information
      */
     public FormattedField getAhvField() {
         return ahvField;
     }
 
     /**
-     * @TODO
-     * @param ahvField
+     * Sets the FormattedField for AHV information.
+     *
+     * @param ahvField the FormattedField for AHV information
      */
     public void setAhvField(FormattedField ahvField) {
         this.ahvField = ahvField;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the JSpinner for child information.
+     * @return the JSpinner for child information
      */
     public JSpinner getChildSpinner() {
         return childSpinner;
     }
 
     /**
-     * @TODO
-     * @param childSpinner
+     * Sets the JSpinner for child information.
+     *
+     * @param childSpinner the JSpinner for child information
      */
     public void setChildSpinner(JSpinner childSpinner) {
         this.childSpinner = childSpinner;
     }
 
     /**
-     * @TODO
-     * @param combobox
+     * Sets the JComboBox for additional selection.
+     *
+     * @param combobox the JComboBox for additional selection
      */
     public void setCombobox(JComboBox combobox) {
         this.combobox = combobox;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the JComboBox for additional selection.
+     * @return the JComboBox for additional selection
      */
     public JComboBox getCombobox() {
         return combobox;

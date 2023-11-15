@@ -4,15 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @TODO
+ * The Panel for a dialog window.
  */
 public class DialogPanel extends JPanel {
     private DialogMainView mainView;
     private DialogBottomView bottomView;
 
     /**
-     * @TODO
-     * @param actionString
+     * Constructs a DialogPanel with specified action string.
+     *
+     * @param actionString the action string for the dialog
      */
     public DialogPanel(String actionString) {
         super(new BorderLayout());
@@ -25,8 +26,9 @@ public class DialogPanel extends JPanel {
     }
 
     /**
-     * @TODO
-     * @param errorMessage
+     * Creates an error message dialog with the given error message.
+     *
+     * @param errorMessage the error message to be displayed
      */
     public void createErrorMessage(String errorMessage){
         JTextArea textArea = new JTextArea(6, 30);
@@ -36,16 +38,16 @@ public class DialogPanel extends JPanel {
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the main view of the dialog.
+     * @return the main view of the dialog
      */
     public DialogMainView getMainView() {
         return mainView;
     }
 
     /**
-     * @TODO
-     * @return
+     * Gets the bottom view of the dialog.
+     * @return the bottom view of the dialog
      */
     public DialogBottomView getBottomView() {
         return bottomView;

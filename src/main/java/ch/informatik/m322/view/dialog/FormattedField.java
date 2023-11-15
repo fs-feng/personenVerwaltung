@@ -6,14 +6,15 @@ import javax.swing.text.MaskFormatter;
 import java.text.ParseException;
 
 /**
- * @TODO
+ * Represents a formatted text field with a specified format.
  */
 public class FormattedField extends JFormattedTextField {
 
     /**
-     * @TODO
-     * @param format
-     * @throws ParseException
+     * Constructs a FormattedField with the specified format.
+     *
+     * @param format the format for the field
+     * @throws ParseException if an error occurs during parsing
      */
     public FormattedField(String format) throws ParseException {
         MaskFormatter formatter = new MaskFormatter(format);
